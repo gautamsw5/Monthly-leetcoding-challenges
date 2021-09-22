@@ -18,3 +18,22 @@ class Solution:
         self.arr = arr
         self.n = len(arr)
         return self.solve(0, tuple([0]*26))
+    
+    def maxLength_Iterative(self, arr: List[str]) -> int:
+        ans = 0
+        for x in range(1 << len(arr)):
+            freq = set()
+            flag = False
+            for i in range(len(arr)):
+                if x % 2 == 0:
+                    for c in arr[i]:
+                        if c in freq:
+                            flag = True
+                            break
+                        freq.add(c)
+                if flag:
+                    break
+                x = x // 2
+            if not flag:
+                ans = max(ans, len(freq))
+        return ans
