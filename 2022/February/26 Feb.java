@@ -23,7 +23,6 @@ class Solution {
         dp = new Integer[1 << n][n];
         int ans = Integer.MAX_VALUE;
         for(int i = 0; i < n; i++) {
-            dp = new Integer[1 << n][n];
             ans = Math.min(ans, shortestPathLength(0, i));
         }
         return ans - 1;
